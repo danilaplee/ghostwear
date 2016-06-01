@@ -417,11 +417,11 @@
 			var camera = new THREE.PerspectiveCamera( 60, 1, 0.1, 9000 );
 
 			var scene = new THREE.Scene();
-				scene.fog = new THREE.Fog( 0x000000, 500, 1400 );
+				scene.fog = new THREE.Fog( 0x000000, 1000, 1400 );
 
 			scene.add( camera );
 
-			var light = new THREE.HemisphereLight( "#fff", "#000", 1 );
+			var light = new THREE.HemisphereLight( "#fff", "#000", 0.7 );
 			var texture = 'models/platform/platform.jpg'
 			scene.add(light)
 
@@ -449,7 +449,7 @@
 				composer.addPass( new THREE.RenderPass( scene, camera ) )
 			var glitchPass = new THREE.GlitchPass(1);
 				glitchPass.renderToScreen = true;
-				composer.addPass( glitchPass );
+				// composer.addPass( glitchPass );
 				addText();
 
 
@@ -477,8 +477,8 @@
 					object.rotation.x += 0.0005;
 					object.rotation.y += 0.001;
 					requestAnimationFrame( render );
-					// renderer.render(scene, camera)
-					composer.render()
+					renderer.render(scene, camera)
+					// composer.render()
 				};
 
 				requestAnimationFrame( render );
